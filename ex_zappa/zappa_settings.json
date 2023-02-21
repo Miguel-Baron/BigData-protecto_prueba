@@ -1,0 +1,25 @@
+{
+    "dev": {
+        "app_function": "apps.f",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "project_name": "ex-zappa",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-acq8xgnxw",
+        "events": [{
+            "function": "your_module.process_upload_function",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::bucket--cloud",
+                  "events": [
+                    "s3:ObjectCreated:*" // Supported event types: http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#supported-notification-event-types
+                  ]
+                  
+               }
+            }]
+    }
+    
+}
